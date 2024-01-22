@@ -31,7 +31,9 @@ export default {
 
 # WORD CLOUD GENERATOR
 
-A simple React component for generating word clouds based on the frequency of words in a given text.
+This app generates a visual word cloud from input text, displaying keywords based on frequency.
+
+<!-- Add Image here -->
 
 ## Table of Contents
 
@@ -40,6 +42,8 @@ A simple React component for generating word clouds based on the frequency of wo
 - [Installation](#installation)
 - [Usage](#usage)
 - [Demo](#demo)
+- [Technologies](#technologies)
+- [Process](#process)
 - [Improvement](#improvement)
 - [Contributing](#contributing)
 - [License](#license)
@@ -50,6 +54,7 @@ The Word Cloud Generator is a React component that takes user-inputted text and 
 
 ## Features
 
+- Input text box for user to enter or paste text content
 - Word cloud generation based on word frequency.
 - Adjustable font size, color, and rotation.
 - Centering the word with the highest frequency.
@@ -86,7 +91,7 @@ The Word Cloud Generator is a React component that takes user-inputted text and 
 
 ## Usage
 
-1. Import the WordCloudGenerator component into your React application.
+<!-- 1. Import the WordCloudGenerator component into your React application.
 
    ```bash
     import WordCloudGenerator from './path/to/WordCloudGenerator';
@@ -98,18 +103,29 @@ The Word Cloud Generator is a React component that takes user-inputted text and 
     <WordCloudGenerator />
    ```
 
-3. Customize the component based on your requirements.
+3. Customize the component based on your requirements. -->
+
+1. Paste or type text into input box
+2. Press 'Generate Word Cloud' button
+3. See visual word cloud populate with keywords
+4. Click reset to clear and enter new text
+
+Font size of each word represents its frequency - most used words are largest.
 
 ## Demo
 
-You can preview the live project here
+You can preview the live project [here](here)
 
 <!--TODO:  Add a link to video or add a video file or gif to show how it works -->
 
 ## Improvement
 
-- Make the word cloud downloadable in either pdf, png or jpeg format.
-- Implement dark and white themes.
+Some possible enhancements for the future:
+
+- Make word cloud update live as user types instead of requiring button click.
+- Improved responsive layout and sizing.
+- Highlight or categorize words by part of speech.
+- Add more customization like themes, implement dark and light themes.
 
 ## Contributing
 
@@ -117,6 +133,67 @@ If you would like to contribute to the development of this project, please follo
 
 ## License
 
-This project is licensed under the MIT License. Feel free to use, modify, and distribute this code for educational or commercial purposes.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute this code for educational or commercial purposes.
 
 <!-- TODO:  Make the word file downloadable as png, pdf, or jpeg -->
+
+<!--
+
+ Here is a README template you can use for the React Word Cloud Generator project:
+
+# React Word Cloud Generator
+
+This app generates a visual word cloud from input text, displaying keywords based on frequency.
+
+![Word Cloud Generator Demo](wordcloud_screenshot.png)
+
+## Features
+
+- Input text box for user to enter or paste text content
+- Generate button processes text and creates word cloud
+- Reset button clears all text and the word cloud
+- Most frequent words show in larger font sizes
+- Random colors assigned to words
+- Words positioned compactly using flexbox
+- Most used word displayed prominently in center
+- Misc common words removed during processing
+
+## Usage
+
+1. Paste or type text into input box
+2. Press 'Generate Word Cloud' button
+3. See visual word cloud populate with keywords
+4. Click reset to clear and enter new text
+
+Font size of each word represents its frequency - most used words are largest.
+
+## Technologies
+
+- React
+- Typescript
+- Flexbox for positioning
+- React Hooks (useState)
+
+## Process
+
+The app processes the input text in a few key steps:
+
+1. Split text into individual words
+2. Remove common words (the, is, on, etc)
+3. Count frequency of remaining words
+4. Map words into visual elements
+5. Size words by their frequency counts
+
+These raw counts are then translated into font sizes to convey importance visually in the word cloud through larger sizes.
+
+## Further Improvements
+
+Some possible enhancements for the future:
+
+- Make word cloud update live as user types instead of requiring button click
+- Improved responsive layout and sizing
+- Highlight or categorize words by part of speech
+- Add more customization like themes
+
+Let me know if you have any other questions!
+ -->
