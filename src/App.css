@@ -1,0 +1,70 @@
+.word-cloud-generator {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+button {
+  padding: 15px;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.word-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+
+  span {
+    margin: 5px;
+    display: inline-block;
+  }
+}
+
+main {
+  padding: 20px 15px;
+}
+
+.title-text {
+  text-align: center;
+  color: #646cff;
+  font-size: 2.5rem;
+  /* transform: rotate(30deg); */
+}
+
+.cloud-container {
+  position: relative;
+}
+
+.cloud {
+  width: 80%;
+  position: absolute;
+}
+
+.generate-cloud {
+  border-radius: 16px;
+  border: none;
+}
+.generate-cloud:hover {
+  background-color: chartreuse;
+}
