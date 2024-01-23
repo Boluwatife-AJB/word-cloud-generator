@@ -6,6 +6,7 @@ function App() {
   return (
     <main>
       <h1 className="title-text">Word Cloud Generator</h1>
+      {/* TODO: Add an introductory text here like - Transform your piece of text into a word cloud format. Enter your text in the input box below ⬇️⬇️⬇️ */}
       <WordCloudGenerator />
       {/* <WordCloud /> */}
     </main>

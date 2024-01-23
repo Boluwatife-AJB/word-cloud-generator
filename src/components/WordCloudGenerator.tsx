@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import WordCloudRenderer from './WordCloudRenderer';
 
 interface WordCloudGeneratorProps {}
+
+// FIXME: Prevent overlapping of the other words from the main word
+// TODO: Make Mobile and Desktop responsive
+// TODO: Make sure the colors are standard
 
 const WordCloudGenerator: React.FC<WordCloudGeneratorProps> = () => {
   const [text, setText] = useState<string>('');
@@ -53,7 +58,10 @@ const WordCloudGenerator: React.FC<WordCloudGeneratorProps> = () => {
     ];
     const words = (inputText.toLowerCase().match(/\b\w+\b/g) || []).filter(
       (word) =>
-        !stopWords.includes(word) && !word.includes("'") && !word.includes('.')
+        !stopWords.includes(word) &&
+        /^[a-zA-Z]+$/.test(word) && // Check if the word contains only letters
+        !word.includes("'") &&
+        !word.includes('.')
     );
     return words;
   };
@@ -66,54 +74,31 @@ const WordCloudGenerator: React.FC<WordCloudGeneratorProps> = () => {
     return frequency;
   };
 
-  const calculateFontSize = (count: number): number => {
-    const minFontSize = 16;
-    const maxFontSize = 45;
-    const scaleFactor = 5;
-    return Math.max(minFontSize, Math.min(maxFontSize, count * scaleFactor));
-  };
-
-  const getRandomColor = () => {
-    return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${
-      Math.random() * 255
-    })`;
-  };
-
-  const randomAngleGenerator = (...options: number[]) => {
-    const randIndex = Math.floor(Math.random() * options.length);
-    return options[randIndex];
-  };
-
-  const getCenterWord = (): { word: string; count: number } | undefined => {
-    const sortedWords = Object.entries(wordFrequency).sort(
-      (a, b) => b[1] - a[1]
-    );
-    return sortedWords[0]
-      ? { word: sortedWords[0][0], count: sortedWords[0][1] }
-      : undefined;
-  };
-
   const resetWordCloud = () => {
     setText('');
     setWordFrequency({});
   };
 
-  const centerWord = getCenterWord();
-
   return (
     <div className="word-cloud-generator">
-      <textarea
-        placeholder="Enter text here..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button className="generate-cloud" onClick={generateWordCloud}>
-        Generate Word Cloud
-      </button>
-      <button className="reset-cloud" onClick={resetWordCloud}>
-        Reset
-      </button>
-      <div
+      <div className="input-part">
+        <p>Enter your text here:</p>
+        <textarea
+          placeholder="Enter text here..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <div className="btn-container">
+          <button className="generate-cloud" onClick={generateWordCloud}>
+            Generate Word Cloud
+          </button>
+          <button className="reset-cloud" onClick={resetWordCloud}>
+            Reset
+          </button>
+        </div>
+      </div>
+      <WordCloudRenderer wordFrequency={wordFrequency} />
+      {/* <div
         className="word-cloud"
         style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
       >
@@ -125,23 +110,32 @@ const WordCloudGenerator: React.FC<WordCloudGeneratorProps> = () => {
               color: `${getRandomColor()}`,
               transform:
                 centerWord && word !== centerWord.word
-                  ? `rotate(${randomAngleGenerator(90, 0)}deg)`
+                  ? `rotate(${randomAngleGenerator(0, 90)}deg)`
                   : 'none',
-              fontWeight: word === centerWord?.word ? 'bold' : 'normal',
+              fontWeight: word === centerWord?.word ? '800' : '400',
               order: word === centerWord?.word ? 0 : 1, // Set order to 0 for the center word
               // transform: 'translateX(-50%) translateY(-50%)',
               position: word === centerWord?.word ? 'absolute' : 'static',
-              top: '70%',
-              left: '50%',
+              top: '30%',
+              left: '30%',
+              textTransform:
+                centerWord && word !== centerWord.word
+                  ? 'lowercase'
+                  : 'uppercase',
+              // FIXME: The Higher the frequency the higher the opacity - Do the same for the z-index too
+              zIndex: word === centerWord?.word ? '1000' : '1',
+              opacity: word === centerWord?.word ? '1' : '0.5',
             }}
             title={`Frequency: ${count}`}
           >
             {word}
           </span>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default WordCloudGenerator;
+
+// Habits are the compound interest of self-improvement. The same way that money multiplies through compound interest, the effects of your habits multiply as you repeat them. They seem to make little difference on any given day and yet the impact they deliver over the months and years can be enormous. It is only when looking back two, five, or perhaps ten years later that the value of good habits and the cost of bad ones becomes strikingly apparent.

@@ -1,70 +1,78 @@
 .word-cloud-generator {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  text-align: center;
+  border: 2px solid red;
+  margin: 2% auto;
+  width: 90vw;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+}
+
+.input-part {
+  flex: 1;
+  width: 45%;
+  /* align-items: center; */
 }
 
 textarea {
-  width: 100%;
-  height: 150px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-size: 1rem;
+  resize: vertical;
+  width: 90%;
+  height: 200px;
   font-family: inherit;
+  padding: 10px;
+  font-size: 1rem;
 }
 
-textarea:focus {
-  outline: none;
-  border: none;
+.btn-container {
+  width: 80%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  gap: 3rem;
 }
 
 button {
-  padding: 15px;
-  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid white;
+  background-color: black;
   font-family: inherit;
-  border-radius: 20px;
-  border: none;
-  outline: none;
+  color: #fff;
+  /* background-color: inherit; */
 }
+
+/* Implement something like a landing page and direction on how to use it */
+/* FIXME: Get a nice color pallete */
 
 .word-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-
-  span {
-    margin: 5px;
-    display: inline-block;
-  }
-}
-
-main {
-  padding: 20px 15px;
-}
-
-.title-text {
-  text-align: center;
-  color: #646cff;
-  font-size: 2.5rem;
-  /* transform: rotate(30deg); */
-}
-
-.cloud-container {
+  /* border: 2px solid chartreuse; */
+  width: 55%;
+  height: 100%;
   position: relative;
 }
 
-.cloud {
-  width: 80%;
-  position: absolute;
+/* MEDIA QUERY FOR MOBILE SCREEN MAX WIDTH =  */
+@media screen and (max-width: 1024px) {
+  .word-cloud-generator {
+    flex-direction: column;
+    width: 80vw;
+  }
+
+  .input-part,
+  .word-cloud {
+    width: 90vw;
+  }
+
+  .input-part {
+    margin: 0 auto;
+  }
 }
 
-.generate-cloud {
-  border-radius: 16px;
-  border: none;
-}
-.generate-cloud:hover {
-  background-color: chartreuse;
+@media screen and (max-width: 480px) {
+  .word-cloud-generator {
+    width: 80vw;
+  }
 }
